@@ -1,7 +1,5 @@
 import { ProcessBasketService } from './process-basket.service';
 import { Component } from '@angular/core';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { HttpClient } from '@angular/common/http';
 
 export interface ProductOrCoupon {
   type: string;
@@ -40,11 +38,9 @@ export class AppComponent {
           this.total = data.total;
         });
     } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Cannot add item - ' + this.item,
-        text: 'Item code is not in list of available items!',
-      });
+      alert(
+        this.item + ' information is not available. Unable to add to list.'
+      );
     }
   }
 }

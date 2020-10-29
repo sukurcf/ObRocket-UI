@@ -9,7 +9,7 @@
   <h1>The Farmer’s Market</h1>
 </div>
 <div class="container">
-  <span style="font-size: larger"><b>Items in Basket</b></span>
+  <span style="font-size: larger"><b>Items in Basket:</b></span>
   <br />
   <table>
     <thead>
@@ -41,6 +41,7 @@
     class="input-text"
     placeholder="Type item code"
     [(ngModel)]="item"
+    (keyup.enter)="addProduct()"
   />
   <button class="add-btn" (click)="addProduct()">Add item</button>
 </div>

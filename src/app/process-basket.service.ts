@@ -24,7 +24,7 @@ export class ProcessBasketService {
     return this.http.post<ProcessResponse>(
       this.process_basket_url,
       {
-        list_of_products: listOfProducts,
+        list_of_items: listOfProducts,
       },
       this.httpOptions
     );
