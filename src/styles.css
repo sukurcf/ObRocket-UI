@@ -75,7 +75,7 @@ ul {
 }
 
 .blank_row {
-  height: 50px !important; /* overwrites any other rules */
+  height: 30px !important; /* overwrites any other rules */
   background-color: #ffffff;
 }
 
@@ -87,7 +87,9 @@ th {
 th {
   height: 30px;
 }
-
+tr {
+  height: 35px;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;

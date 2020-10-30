@@ -13,34 +13,51 @@ export interface ProductOrCoupon {
 })
 export class AppComponent {
   title = 'ObRocket-UI';
-  item: string;
-  available_product_codes: string[];
-  entered_product_codes: string[] = [];
-  products: ProductOrCoupon[];
+  currentItem: string;
+  available_item_codes: string[];
+  entered_item_codes: string[] = [];
+  items: ProductOrCoupon[];
   total: number;
 
   constructor(private processBasketService: ProcessBasketService) {}
 
   ngOnInit() {
-    this.available_product_codes = ['CH1', 'AP1', 'CF1', 'MK1', 'OM1'];
-    this.item = '';
+    this.available_item_codes = ['CH1', 'AP1', 'CF1', 'MK1', 'OM1'];
+    this.currentItem = '';
     this.total = 0;
   }
 
-  addProduct() {
-    if (this.item !== '' && this.available_product_codes.includes(this.item)) {
-      this.entered_product_codes.push(this.item);
-      this.item = '';
+  addItem() {
+    if (
+      this.currentItem !== '' &&
+      this.available_item_codes.includes(this.currentItem)
+    ) {
+      this.entered_item_codes.push(this.currentItem);
+      this.currentItem = '';
       this.processBasketService
-        .processBasket(this.entered_product_codes)
+        .processBasket(this.entered_item_codes)
         .subscribe((data) => {
-          this.products = data.basket_products;
+          this.items = data.basket_products;
           this.total = data.total;
         });
     } else {
       alert(
-        this.item + ' information is not available. Unable to add to list.'
+        this.currentItem +
+          ' information is not available. Unable to add to list.'
       );
+    }
+  }
+
+  deleteItem(item) {
+    if (this.entered_item_codes.includes(item)) {
+      let index = this.entered_item_codes.indexOf(item);
+      this.entered_item_codes.splice(index, 1);
+      this.processBasketService
+        .processBasket(this.entered_item_codes)
+        .subscribe((data) => {
+          this.items = data.basket_products;
+          this.total = data.total;
+        });
     }
   }
 }
