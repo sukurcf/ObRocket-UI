@@ -44,6 +44,18 @@
   border: none;
 }
 
+.remove-btn {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #FF0000;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 0.4rem;
+  display: inline-block;
+  border: none;
+}
+
 .app-title {
   text-align: center;
   color: #c1c1c1;

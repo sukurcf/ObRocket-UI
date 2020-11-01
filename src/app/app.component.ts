@@ -60,4 +60,9 @@ export class AppComponent {
         });
     }
   }
+
+  reloadPage() {
+    window.location.reload();
+  }
+
 }

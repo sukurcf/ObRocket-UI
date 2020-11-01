@@ -24,11 +24,12 @@
       <tr *ngFor="let item of items" style="text-align: center">
         <td>{{ item.product }}</td>
         <td>{{ item.coupon }}</td>
-        <td>{{ item.price }}</td>
+        <td>{{ item.price | number: '1.2-2' }}</td>
         <td>
           <button
             *ngIf="item.type === 'product'"
             class="material-icons"
+            style="color: red;"
             (click)="deleteItem(item.product)"
           >
             delete
@@ -54,4 +55,5 @@
     (keyup.enter)="addItem()"
   />
   <button class="add-btn" (click)="addItem()">Add item</button>
+  <button class="remove-btn" (click)="reloadPage()">Delete All</button>
 </div>
